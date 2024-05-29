@@ -1,0 +1,12 @@
+aspect_clause
+local_name
+attribute_definition_clause
+enumeration_representation_clause
+enumeration_aggregate
+record_representation_clause
+component_clause
+position
+first_bit
+last_bit
+code_statement
+restriction
