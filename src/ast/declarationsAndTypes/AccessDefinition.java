@@ -7,21 +7,20 @@ import visitor.Ada95Visitor;
 
 public class AccessDefinition extends AbstractAST implements AST {
 
-    private Name subtypeMark;
+	private Name subtypeMark;
 
-    public AccessDefinition(Name subtypeMark) {
-	super();
-	this.subtypeMark = subtypeMark;
-    }
+	public AccessDefinition(Name subtypeMark) {
+		super();
+		this.subtypeMark = subtypeMark;
+	}
 
-    @Override
-    public Object accept(Ada95Visitor<Object> visitor, Object param) {
-	visitor.visit(this, param);
-	return null;
-    }
+	@Override
+	public Object accept(Ada95Visitor<Object> visitor, Object param) {
+		return visitor.visit(this, param);
+	}
 
-    public Name getSubtypeMark() {
-	return subtypeMark;
-    }
+	public Name getSubtypeMark() {
+		return subtypeMark;
+	}
 
 }

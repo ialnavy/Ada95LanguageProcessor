@@ -10,39 +10,38 @@ import visitor.Ada95Visitor;
 
 public class AccessToSubprogramDefinition extends AbstractAST implements AST {
 
-    private ParameterProfile parameterProfile;
-    private ParameterAndResultProfile parameterAndResultProfile;
+	private ParameterProfile parameterProfile;
+	private ParameterAndResultProfile parameterAndResultProfile;
 
-    private Token protectedToken;
+	private Token protectedToken;
 
-    public AccessToSubprogramDefinition(ParameterProfile parameterProfile, Token protectedToken) {
-	super();
-	this.parameterProfile = parameterProfile;
-	this.protectedToken = protectedToken;
-    }
+	public AccessToSubprogramDefinition(ParameterProfile parameterProfile, Token protectedToken) {
+		super();
+		this.parameterProfile = parameterProfile;
+		this.protectedToken = protectedToken;
+	}
 
-    public AccessToSubprogramDefinition(ParameterAndResultProfile parameterAndResultProfile, Token protectedToken) {
-	super();
-	this.parameterAndResultProfile = parameterAndResultProfile;
-	this.protectedToken = protectedToken;
-    }
+	public AccessToSubprogramDefinition(ParameterAndResultProfile parameterAndResultProfile, Token protectedToken) {
+		super();
+		this.parameterAndResultProfile = parameterAndResultProfile;
+		this.protectedToken = protectedToken;
+	}
 
-    @Override
-    public Object accept(Ada95Visitor<Object> visitor, Object param) {
-	visitor.visit(this, param);
-	return null;
-    }
+	@Override
+	public Object accept(Ada95Visitor<Object> visitor, Object param) {
+		return visitor.visit(this, param);
+	}
 
-    public ParameterProfile getParameterProfile() {
-	return parameterProfile;
-    }
+	public ParameterProfile getParameterProfile() {
+		return parameterProfile;
+	}
 
-    public ParameterAndResultProfile getParameterAndResultProfile() {
-	return parameterAndResultProfile;
-    }
+	public ParameterAndResultProfile getParameterAndResultProfile() {
+		return parameterAndResultProfile;
+	}
 
-    public Token getProtectedToken() {
-	return protectedToken;
-    }
+	public Token getProtectedToken() {
+		return protectedToken;
+	}
 
 }

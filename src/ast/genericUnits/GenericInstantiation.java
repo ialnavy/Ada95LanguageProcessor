@@ -37,8 +37,8 @@ public class GenericInstantiation extends AbstractAST implements AST {
 
     @Override
     public Object accept(Ada95Visitor<Object> visitor, Object param) {
-	visitor.visit(this, param);
-	return null;
+	return visitor.visit(this, param);
+	
     }
 
     public Token getUnitToInstantiate() {
