@@ -1,45 +1,49 @@
-with Ada.Text_IO, Ada.Integer_Text_IO;
-    use Ada.Text_IO, Ada.Integer_Text_IO;
-    procedure Word_Count is
-        File    : File_Type;
-        Name    : String(1..80);
-        Size    : Natural;
-        Count   : Natural := 0;
-        In_Word : Boolean := False;
-        Char    : Character;
-    begin
-        -- Open input file
-        loop
-            begin
-                Put ("Enter filename: ");
-                Get_Line (Name, Size);
-                Open (File, Mode => In_File, Name => Name(1..Size));
-                exit;
-            exception
-                when Name_Error | Use_Error =>
-                    Put_Line ("Invalid filename -- please try again.");
-            end;
-        end loop;
-     
-        -- Process file
-        while not End_Of_File (File) loop
-            -- The end of a line is also the end of a word
-            if End_Of_Line (File) then
-                In_Word := False;
-            end if;
-     
-            -- Process next character
-            Get (File, Char);
-            if In_Word and Char = ' ' then
-                In_Word := False;
-            elsif not In_Word and Char /= ' ' then
-                In_Word := True;
-                Count   := Count + 1;
-            end if;
-        end loop;
-     
-        -- Close file and display result
-        Close (File);
-        Put (Count);
-        Put_Line (" words.");
-    end Word_Count;
+with ADA.TEXT_IO;
+with ADA.INTEGER_TEXT_IO;
+
+use ADA.TEXT_IO;
+use ADA.INTEGER_TEXT_IO;
+
+procedure P_WORD_COUNT is
+    V_FILE    : FILE_TYPE;
+    V_NAME    : STRING(1..80);
+    V_SIZE    : NATURAL;
+    V_COUNT   : NATURAL := 0;
+    V_IN_WORD : BOOLEAN := FALSE;
+    V_CHAR    : CHARACTER;
+begin
+    -- Open input file
+    loop
+        begin
+            PUT ("Enter filename: ");
+            GET_LINE (V_NAME, V_SIZE);
+            OPEN (V_FILE, MODE => IN_FILE, NAME => V_NAME(1..V_SIZE));
+            exit;
+        exception
+            when NAME_ERROR | USE_ERROR =>
+                PUT_LINE ("Invalid filename -- please try again.");
+        end;
+    end loop;
+    
+    -- Process file
+    while not END_OF_FILE (V_FILE) loop
+        -- The end of a line is also the end of a word
+        if END_OF_FILE (V_FILE) then
+            V_IN_WORD := FALSE;
+        end if;
+    
+        -- Process next character
+        GET (V_FILE, V_CHAR);
+        if V_IN_WORD and V_CHAR = ' ' then
+            V_IN_WORD := FALSE;
+        elsif not V_IN_WORD and V_CHAR /= ' ' then
+            V_IN_WORD := TRUE;
+            V_COUNT   := V_COUNT + 1;
+        end if;
+    end loop;
+    
+    -- Close file and display result
+    CLOSE (V_FILE);
+    PUT (V_COUNT);
+    PUT_LINE (" words.");
+end P_WORD_COUNT;
